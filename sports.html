@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportsHubi</title>
+  <link rel="icon" href="https://editorial.uefa.com/resources/028f-1b63f95e398a-95e72fa8e467-1000/format/wide1/fbl-euro-2024-match51-esp-eng.jpeg?imwidth=656" type="image/x-icon">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #4a90e2;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    #search-container {
+      margin: 1rem auto;
+      text-align: center;
+    }
+
+    #search-box {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 80%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    main {
+      padding: 1rem;
+    }
+
+    #news-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .news-item {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .news-item:hover {
+      transform: scale(1.05);
+    }
+
+    .news-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 1rem;
+    }
+
+    .news-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .news-description {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .news-link {
+      display: block;
+      margin-top: 0.5rem;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .news-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #4a90e2;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    .author-info {
+      margin-top: 1rem;
+    }
+
+    .author-info a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .whatsapp-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  background-color: #25d366;
+  border-radius: 30px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-icon img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SportsHubi</h1>
+    <div id="search-container">
+      <input type="text" id="search-box" placeholder="Search sports news..." onkeyup="searchNews()">
+    </div>
+  </header>
+  <main>
+    <div id="news-container"></div>
+  </main>
+  <footer>
+    <p>Powered by EDUMAGICIA</p>
+    <div class="author-info">
+      <p>Author: <strong>AHUEKWE PRECIOUS MADUABUCHI</strong></p>
+      
+      <a href="https://wa.me/+2348128885606?text=Goodday%20Sir%20I'm%20reaching%20out%20to%20you%20via%20SportsHubi" 
+   class="whatsapp-icon" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/256/1383/1383269.png" alt="WhatsApp Icon">
+  Click here to chat
+</a>
+     
+     
+    </div>
+  </footer>
+
+  <script>
+    const apiKey = "b1df8768b55a4eb09359c53eebe912ad"; // Replace with your NewsAPI key
+    const newsContainer = document.getElementById("news-container");
+    let articlesData = []; // Store fetched articles
+
+    async function fetchSportsNews() {
+      try {
+        const response = await fetch(
+          `https://newsapi.org/v2/top-headlines?category=sports&apiKey=${apiKey}`
+        );
+        const data = await response.json();
+
+        if (data.articles) {
+          articlesData = data.articles; // Store articles
+          displayNews(articlesData);
+        } else {
+          newsContainer.innerHTML = "<p>No news available.</p>";
+        }
+      } catch (error) {
+        console.error("Error fetching sports news:", error);
+        newsContainer.innerHTML = "<p>Failed to load news.</p>";
+      }
+    }
+
+    function displayNews(articles) {
+      newsContainer.innerHTML = articles
+        .map(
+          (article) => `
+        <div class="news-item">
+          <div class="news-image">
+            <img src="${article.urlToImage || 'https://via.placeholder.com/300'}" alt="News Image">
+          </div>
+          <div class="news-content">
+            <h2 class="news-title">${article.title}</h2>
+            <p class="news-description">${article.description || 'No description available.'}</p>
+            <a href="${article.url}" target="_blank" class="news-link">Read More</a>
+          </div>
+        </div>
+      `
+        )
+        .join("");
+    }
+
+    function searchNews() {
+      const query = document.getElementById("search-box").value.toLowerCase();
+      const filteredArticles = articlesData.filter((article) =>
+        article.title.toLowerCase().includes(query) ||
+        (article.description && article.description.toLowerCase().includes(query))
+      );
+      displayNews(filteredArticles);
+    }
+
+    // Fetch news on page load
+    fetchSportsNews();
+  </script>
+  
+  <script type='text/javascript' src='//slushhelmetmirth.com/39/2a/0d/392a0d28346a0e19cd71e87eccfdecf0.js'></script>
+  
+  <script async="async" data-cfasync="false" src="//slushhelmetmirth.com/3cc61617ba2cfb0de73084609526dfed/invoke.js"></script>
+<div id="container-3cc61617ba2cfb0de73084609526dfed"></div>
+
+<script type='text/javascript' src='//slushhelmetmirth.com/8f/37/0f/8f370f68d61188fd982021f8f5999e68.js'></script>
+
+</body>
+</html>
