@@ -1,227 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SportsHubi</title>
-  <link rel="icon" href="https://editorial.uefa.com/resources/028f-1b63f95e398a-95e72fa8e467-1000/format/wide1/fbl-euro-2024-match51-esp-eng.jpeg?imwidth=656" type="image/x-icon">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-
-    header {
-      background-color: #4a90e2;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    #search-container {
-      margin: 1rem auto;
-      text-align: center;
-    }
-
-    #search-box {
-      padding: 0.5rem;
-      font-size: 1rem;
-      width: 80%;
-      max-width: 500px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    main {
-      padding: 1rem;
-    }
-
-    #news-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1rem;
-    }
-
-    .news-item {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.2s;
-    }
-
-    .news-item:hover {
-      transform: scale(1.05);
-    }
-
-    .news-image img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .news-content {
-      padding: 1rem;
-    }
-
-    .news-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    .news-description {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .news-link {
-      display: block;
-      margin-top: 0.5rem;
-      color: #007bff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .news-link:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #4a90e2;
-      color: white;
-      margin-top: 2rem;
-    }
-
-    .author-info {
-      margin-top: 1rem;
-    }
-
-    .author-info a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-    }
-    
-    .whatsapp-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: white;
-  background-color: #25d366;
-  border-radius: 30px;
-  padding: 10px 15px;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.whatsapp-icon:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.whatsapp-icon img {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Odds & Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .event {
+            background: white;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .event h3 {
+            color: #333;
+        }
+        .odds {
+            display: flex;
+            justify-content: space-between;
+        }
+        .odds div {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            margin: 0 5px;
+        }
+        .prediction {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #4CAF50;
+            text-align: center;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>SportsHubi</h1>
-    <div id="search-container">
-      <input type="text" id="search-box" placeholder="Search sports news..." onkeyup="searchNews()">
+    <header>
+        <h1>Football Odds & Predictions</h1>
+        <p>Real-time odds and AI-powered predictions</p>
+    </header>
+
+    <div class="container" id="events-container">
+        <p class="loading">Loading odds and predictions...</p>
     </div>
-  </header>
-  <main>
-    <div id="news-container"></div>
-  </main>
-  <footer>
-    <p>Powered by EDUMAGICIA</p>
-    <div class="author-info">
-      <p>Author: <strong>AHUEKWE PRECIOUS MADUABUCHI</strong></p>
-      
-      <a href="https://wa.me/+2348128885606?text=Goodday%20Sir%20I'm%20reaching%20out%20to%20you%20via%20SportsHubi" 
-   class="whatsapp-icon" target="_blank">
-  <img src="https://cdn-icons-png.flaticon.com/256/1383/1383269.png" alt="WhatsApp Icon">
-  Click here to chat
-</a>
-     
-     
-    </div>
-  </footer>
 
-  <script>
+    <script>
+    const API_KEY = "daf98a97a05594ca1466e377585cb6fd"; // Replace with your Odds API key
+    const ODDS_API_URL = `https://api.the-odds-api.com/v4/sports/soccer_epl/odds?regions=uk&apiKey=${API_KEY}`;
 
-  const apiKey = "b1df8768b55a4eb09359c53eebe912ad"; // Replace with your NewsAPI key
-const newsContainer = document.getElementById("news-container");
-
-async function fetchSportsNews() {
-  try {
-    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-    const apiUrl = `${proxyUrl}https://newsapi.org/v2/top-headlines?category=sports&apiKey=${apiKey}`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-
-    if (data.articles && data.articles.length > 0) {
-      displayNews(data.articles);
-    } else {
-      newsContainer.innerHTML = "<p>No news available. Please try again later.</p>";
+    // Mock function to simulate fetching external consensus data
+    async function fetchConsensusData(teamName) {
+        // Replace this with actual API requests or scraping logic
+        const mockConsensus = {
+            "Arsenal": 70,
+            "Manchester United": 30
+        };
+        return mockConsensus[teamName] || Math.random() * 100; // Return random if team data is unavailable
     }
-  } catch (error) {
-    console.error("Error fetching sports news:", error);
-    newsContainer.innerHTML = "<p>Failed to load news. Check your connection or API key.</p>";
-  }
-}
 
-function displayNews(articles) {
-  newsContainer.innerHTML = articles
-    .map(
-      (article) => `
-    <div class="news-item">
-      <div class="news-image">
-        <img src="${article.urlToImage || 'https://via.placeholder.com/300'}" alt="News Image">
-      </div>
-      <div class="news-content">
-        <h2 class="news-title">${article.title}</h2>
-        <p class="news-description">${article.description || 'No description available.'}</p>
-        <a href="${article.url}" target="_blank" class="news-link">Read More</a>
-      </div>
-    </div>
-  `
-    )
-    .join("");
-}
+    // Fetch odds from The Odds API
+    async function fetchOdds() {
+        try {
+            const response = await fetch(ODDS_API_URL);
+            if (!response.ok) {
+                throw new Error("Failed to fetch odds");
+            }
+            const data = await response.json();
+            displayOddsAndPredictions(data);
+        } catch (error) {
+            console.error(error);
+            document.getElementById("events-container").innerHTML = `
+                <p class="loading">Failed to load odds. Please try again later.</p>
+            `;
+        }
+    }
 
-// Fetch news on page load
-fetchSportsNews();
+    // Always calculate a winner (no "Too close to call")
+    async function calculatePrediction(homeTeam, awayTeam) {
+        const homeConsensus = await fetchConsensusData(homeTeam);
+        const awayConsensus = await fetchConsensusData(awayTeam);
+
+        if (homeConsensus > awayConsensus) {
+            return homeTeam;
+        } else if (awayConsensus > homeConsensus) {
+            return awayTeam;
+        } else {
+            // Randomly pick a winner if consensus is equal
+            return Math.random() > 0.5 ? homeTeam : awayTeam;
+        }
+    }
+
+    // Display odds and predictions on the webpage
+    async function displayOddsAndPredictions(events) {
+        const container = document.getElementById("events-container");
+        container.innerHTML = ""; // Clear the loading text
+
+        if (events.length === 0) {
+            container.innerHTML = `<p class="loading">No odds available at the moment.</p>`;
+            return;
+        }
+
+        for (const event of events) {
+            const homeTeam = event.home_team;
+            const awayTeam = event.away_team;
+
+            // Calculate the predicted winner using consensus logic
+            const predictedWinner = await calculatePrediction(homeTeam, awayTeam);
+
+            const bookmakers = event.bookmakers?.[0]?.markets?.[0]?.outcomes || [];
+            const eventElement = document.createElement("div");
+            eventElement.className = "event";
+            eventElement.innerHTML = `
+                <h3>${homeTeam} vs ${awayTeam}</h3>
+                <p><strong>Commence Time:</strong> ${new Date(event.commence_time).toLocaleString()}</p>
+                <div class="odds">
+                    <div>
+                        <p><strong>${homeTeam}</strong></p>
+                        <p>${bookmakers[0]?.price || "N/A"}</p>
+                    </div>
+                    <div>
+                        <p><strong>${awayTeam}</strong></p>
+                        <p>${bookmakers[1]?.price || "N/A"}</p>
+                    </div>
+                </div>
+                <p class="prediction">Predicted Winner: ${predictedWinner}</p>
+            `;
+            container.appendChild(eventElement);
+        }
+    }
+
+    // Fetch odds and refresh data every 60 seconds
+    async function fetchAndUpdateOdds() {
+        await fetchOdds(); // Fetch the latest odds and predictions
+    }
+
+    // Set an interval to refresh data every 60 seconds (60000 ms)
+    setInterval(fetchAndUpdateOdds, 60000); 
+
+    // Initial fetch on page load
+    fetchOdds();
 </script>
-  
-  <script type='text/javascript' src='//slushhelmetmirth.com/39/2a/0d/392a0d28346a0e19cd71e87eccfdecf0.js'></script>
-  
-  <script async="async" data-cfasync="false" src="//slushhelmetmirth.com/3cc61617ba2cfb0de73084609526dfed/invoke.js"></script>
-<div id="container-3cc61617ba2cfb0de73084609526dfed"></div>
-
-<script type='text/javascript' src='//slushhelmetmirth.com/8f/37/0f/8f370f68d61188fd982021f8f5999e68.js'></script>
-
 </body>
 </html>
